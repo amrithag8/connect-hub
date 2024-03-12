@@ -85,7 +85,7 @@ function App() {
   // const [unReadCount, setUnReadCount] = useState(0);
 
   useEffect(() => {
-    socket.current = io("http://localhost:3007");
+    socket.current = io("https://connect-hub-19ki.onrender.com/");
     socket.current.on("receive_msg", (data) => {
       console.log("Received message data:", data);
 
