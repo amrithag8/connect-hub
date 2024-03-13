@@ -12,7 +12,7 @@ import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
 
 
 
-export const Chatlist=({selectedUser
+const Chatlist=({selectedUser
   ,  activeUser,  setUserSearch, userSearch, sendMessage})=> {
 
 const {setReceivedmsg, setMessage,receivedmsg, message}=useContext(MessageContext);
@@ -155,4 +155,4 @@ display:"flex", flexDirection:"column", pb:"50px" , pr:"20px", overflowY:"scroll
   )
 }
 
-export default Chatlist
+export default Chatlist;
