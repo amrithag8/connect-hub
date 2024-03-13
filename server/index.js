@@ -25,7 +25,7 @@ const io = require("socket.io")(server, {
     },
   });
 
-  app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+  app.use(cors({ origin: "https://connect-hub-client.onrender.com", credentials: true }));
 
   connectDb();
 const userRoute=require("./Routes/userRoute");
