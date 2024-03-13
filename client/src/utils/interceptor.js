@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosInstance=axios.create({
-    baseURL: "https://connect-hub-19ki.onrender.com/api/",
+    baseURL: "http://localhost:3007/api",
 })
 
 
