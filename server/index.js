@@ -25,6 +25,8 @@ const io = require("socket.io")(server, {
     },
   });
 
+  app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+
   connectDb();
 const userRoute=require("./Routes/userRoute");
 const postRoute=require("./Routes/postRoute");
