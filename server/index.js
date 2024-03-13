@@ -123,4 +123,6 @@ io.on('connection', (socket) => {
 
 
 const PORT=3007;
-server.listen(PORT, console.log(`https://connect-hub-19ki.onrender.com/`));
+server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on http://0.0.0.0:${PORT}`);
+  });
