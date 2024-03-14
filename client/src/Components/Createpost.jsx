@@ -22,8 +22,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import cloudinary from 'cloudinary-core'; 
 
 import { PostsContext } from "../Contexts/PostsContext";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 
 function Createpost() {
@@ -149,11 +149,11 @@ let postArr=[];
         // },
         data: {postArr, title, caption},
       });
-      toast.success(response.data.message);
+      alert(response.data.message);
     }
       
      catch (error) {
-      toast.error(error.response.data.message);
+      alert(error.response.data.message);
     }
 
     window.location.reload();

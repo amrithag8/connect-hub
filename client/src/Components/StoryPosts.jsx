@@ -18,7 +18,7 @@ import {
   import { Navigate, useNavigate } from "react-router-dom";
   import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
   import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-  import {  toast } from 'react-toastify';
+  // import {  toast } from 'react-toastify';
 
   import cloudinary from 'cloudinary-core'; 
   
@@ -150,11 +150,11 @@ import { StoryContext } from "../Contexts/StoryContext";
           // },
           data: {postArr, caption},
         });
-        toast.success(response.data.message);
+        alert(response.data.message);
       }
         
        catch (error) {
-        toast.error(error.response.data.message);
+        alert(error.response.data.message);
       }
   
       window.location.reload();
