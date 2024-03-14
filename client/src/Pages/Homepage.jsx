@@ -74,7 +74,7 @@ Homepage = ({
 
     
 
-    if (scrollTop + clientHeight >= scrollHeight - 100) {
+    if (scrollTop + clientHeight >= scrollHeight - 1000) {
       // Detect end of scroll
       console.log("page num", page);
       // getPostsPage(page); // Load next page
@@ -83,10 +83,10 @@ Homepage = ({
   };
 
   useEffect(() => {
-    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-    alert("scrollTop"+ scrollTop);
-    console.log("clientHeight", clientHeight);
-    console.log("scrollHeight", scrollHeight);
+    // const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    console.log("scrollTop", document.documentElement.scrollTop);
+    console.log("clientHeight", document.documentElement.clientHeight);
+    console.log("scrollHeight", document.documentElement.scrollHeight);
 
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("touchmove", handleScroll);
