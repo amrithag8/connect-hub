@@ -66,9 +66,9 @@ Homepage = ({
   const handleScroll = () => {
     console.log("hi scroll");
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-    alert("scrollTop"+ scrollTop);
-    console.log("clientHeight", clientHeight);
-    console.log("scrollHeight", scrollHeight);
+    // alert("scrollTop"+ scrollTop);
+    // console.log("clientHeight", clientHeight);
+    // console.log("scrollHeight", scrollHeight);
     if (isLoading) return;
     // Return if already loading data
 
@@ -83,6 +83,10 @@ Homepage = ({
   };
 
   useEffect(() => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    alert("scrollTop"+ scrollTop);
+    console.log("clientHeight", clientHeight);
+    console.log("scrollHeight", scrollHeight);
 
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("touchmove", handleScroll);
