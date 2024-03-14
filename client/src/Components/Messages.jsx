@@ -88,7 +88,7 @@ function Messages({
 
         // className={classes.root}
       >
-        <Box sx={{ width: {md:"40%", xs:userSearch?"5%":"100%"}, gap: "50px", display: "flex" }}>
+        <Box sx={{ width: {sm:"40%", xs:userSearch?"5%":"100%"}, gap: "50px", display: "flex" }}>
           <MenuItemList
             activeUser={activeUser}
             

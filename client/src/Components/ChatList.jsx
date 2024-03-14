@@ -106,13 +106,13 @@ display:{sm:"flex", xs:"none"}, flexDirection:"column", p:"20px" ,    marginBott
 
 <Box  sx={{width:"100%", height:"500px",
 
-display:"flex", flexDirection:"column", pb:"50px" , pr:"20px", overflowY:"scroll",
+display:{sm:"flex", xs:userSearch?"flex":"none"}, flexDirection:"column", pb:"50px" , pr:"20px", overflowY:"scroll",
 '&::-webkit-scrollbar':{
   width:10,
  
 },
 '&::-webkit-scrollbar-track':{
-  backgroundColor:""
+  backgroundColor:"red"
 } ,
 '&::-webkit-scrollbar-thumb':{
   backgroundColor:"gray",

@@ -29,6 +29,9 @@ Homepage = ({
   const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
+
+ 
+
   
 
   useEffect(() => {
@@ -63,7 +66,7 @@ Homepage = ({
   const handleScroll = () => {
     console.log("hi scroll");
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-    console.log("scrollTop", scrollTop);
+    alert("scrollTop"+ scrollTop);
     console.log("clientHeight", clientHeight);
     console.log("scrollHeight", scrollHeight);
     if (isLoading) return;
@@ -93,7 +96,20 @@ Homepage = ({
 
   return (
     <>
-      <Box id="homepage" sx={{ display: "flex" }}>
+      <Box id="homepage" sx={{ display: "flex" , overflowY:"scroll",
+'&::-webkit-scrollbar':{
+  width:10,
+ 
+},
+'&::-webkit-scrollbar-track':{
+  // backgroundColor:"red"
+} ,
+'&::-webkit-scrollbar-thumb':{
+  backgroundColor:"gray",
+  borderRadius:"5px"
+  
+  
+}  }}>
         <Box
           sx={{
             gap: "20px",

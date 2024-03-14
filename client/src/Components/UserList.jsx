@@ -116,7 +116,7 @@ export const UserList = ({
         display: {xs:userSearch?"none":"flex", md:"flex"},
         flexDirection: "column",
         gap: "30px",
-        overflow:"auto"
+      
       }}
     >
       <ListItem sx={{ display: "flex", justifyContent: "space-between" }}>
