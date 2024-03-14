@@ -62,13 +62,14 @@ Homepage = ({
 
   const handleScroll = () => {
     console.log("hi scroll");
-    if (isLoading) return;
-    // Return if already loading data
-
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
     console.log("scrollTop", scrollTop);
     console.log("clientHeight", clientHeight);
     console.log("scrollHeight", scrollHeight);
+    if (isLoading) return;
+    // Return if already loading data
+
+    
 
     if (scrollTop + clientHeight >= scrollHeight - 100) {
       // Detect end of scroll
