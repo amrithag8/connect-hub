@@ -66,6 +66,10 @@ Homepage = ({
     // Return if already loading data
 
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    console.log("scrollTop", scrollTop);
+    console.log("clientHeight", clientHeight);
+    console.log("scrollHeight", scrollHeight);
+
     if (scrollTop + clientHeight >= scrollHeight - 100) {
       // Detect end of scroll
       console.log("page num", page);
