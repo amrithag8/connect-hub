@@ -52,10 +52,14 @@ const loginHandler=async()=>{
     // setActiveUser(response.data);
     localStorage.setItem("AccessToken", response.data.AccessToken);
     // localStorage.setItem("username", response.data.username);
-    window.location.reload();
-    if(localStorage.getItem("AccessToken")){
-      Navigate("/", {replace:true});
-    }
+    // window.location.reload();
+
+    setInterval(()=>{
+      if(localStorage.getItem("AccessToken")){
+        Navigate("/", {replace:true});
+      }
+    }, 5000)
+    
    
     
   
