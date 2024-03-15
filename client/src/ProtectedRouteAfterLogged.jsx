@@ -11,7 +11,11 @@ const ProtectedRouteAfterLogged=({children})=> {
         
     }
 
-    return <Navigate to="/"/>;
+    return <Navigate to="/" replace={true}/>;
+
+    // navigate("/");
+    
+    
 
     // useEffect(()=>{
     //     navigate("/");

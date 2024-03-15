@@ -63,7 +63,6 @@ function App() {
   } = useContext(PostsContext);
 
   const {
-    
     receivedmsg,
     setReceivedmsg,
     message,
@@ -72,7 +71,7 @@ function App() {
     setUnReadCount,
   } = useContext(MessageContext);
 
-  const {triggerStory, setAllStory}=useContext(StoryContext);
+  const { triggerStory, setAllStory } = useContext(StoryContext);
 
   // const [messageOpen, setMessageOpen] = useState(false);
 
@@ -137,14 +136,14 @@ function App() {
     getAllposts();
   }, []);
 
-const getAllStories=async()=>{
-const response=await axiosInstance("/story/getAllStory");
-setAllStory(response.data);
-}
+  const getAllStories = async () => {
+    const response = await axiosInstance("/story/getAllStory");
+    setAllStory(response.data);
+  };
 
-useEffect(() => {
-  getAllStories();
-}, []);
+  useEffect(() => {
+    getAllStories();
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("AccessToken")) {
@@ -219,13 +218,13 @@ useEffect(() => {
     <>
       <ThemeProvider theme={mode ? darkTheme : lightTheme}>
         <CssBaseline />
-        <Appbar mode={mode} setMode={setMode} setTriggerPost={setTriggerPost}/>
+        <Appbar mode={mode} setMode={setMode} setTriggerPost={setTriggerPost} />
 
         {triggerPost && <Createpost />}
         {changePost && <Editpost />}
         {loaded > 0 && <UploadProgress loaded={loaded} />}
-        {triggerViewpost && <ViewPost mode={mode}/>}
-        {triggerStory&&<StoryPosts/>}
+        {triggerViewpost && <ViewPost mode={mode} />}
+        {triggerStory && <StoryPosts />}
 
         <Routes>
           <Route element={<ProtectedRouteAfterLogged />}>
@@ -260,9 +259,18 @@ useEffect(() => {
             />
             <Route path="/change-pass" element={<ChangePassword />} />
             <Route path="/story/:storyID" element={<StoryPage />} />
-            <Route path="/profile" element={<Profilepage mode={mode} setMode={setMode}/>} />
-            <Route path="/profile/:id" element={<Profilepage mode={mode} setMode={setMode}/>} />
-            <Route path="/edit-profile" element={<Editprofilepage mode={mode} setMode={setMode}/>} />
+            <Route
+              path="/profile"
+              element={<Profilepage mode={mode} setMode={setMode} />}
+            />
+            <Route
+              path="/profile/:id"
+              element={<Profilepage mode={mode} setMode={setMode} />}
+            />
+            <Route
+              path="/edit-profile"
+              element={<Editprofilepage mode={mode} setMode={setMode} />}
+            />
 
             <Route
               path="/"
