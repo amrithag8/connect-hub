@@ -27,6 +27,8 @@ import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTo
 import ArrowCircleRightTwoToneIcon from '@mui/icons-material/ArrowCircleRightTwoTone';
 
 
+
+
 import { useContext, useEffect, useRef, useState } from "react";
 import { axiosInstance } from "../utils/interceptor";
 import PostComponent from "./PostComponent";
@@ -52,6 +54,8 @@ export const Newposts = ({
   const socket = useRef();
 
   // console.log("posts items", items);
+
+  
 
 
   const editPosts = Boolean(posteditoptions);
@@ -204,6 +208,8 @@ setActiveUser((prevActiveUser) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        
+        
       }}
     >
       <AccountsMenu

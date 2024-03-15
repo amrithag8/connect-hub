@@ -6,6 +6,7 @@ import "./Homepage.css";
 import { useContext, useEffect, useState } from "react";
 import { axiosInstance } from "../utils/interceptor";
 import { PostsContext } from "../Contexts/PostsContext";
+import { useMediaQuery, useTheme } from '@mui/material';
 
 export const 
 
@@ -29,6 +30,17 @@ Homepage = ({
   const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
+
+
+  // const theme = useTheme();
+  // const isXs = useMediaQuery(theme.breakpoints.only('xs'));
+
+  // Disable body scrolling when screen size is xs
+  // if (isXs) {
+  //   document.body.style.overflow = 'hidden';
+  // } else {
+  //   document.body.style.overflow = 'visible';
+  // }
 
  
 
@@ -100,20 +112,22 @@ Homepage = ({
 
   return (
     <>
-      <Box id="homepage" sx={{ display: "flex" , overflowY:"scroll",
-'&::-webkit-scrollbar':{
-  width:10,
+      <Box id="homepage" sx={{ display: "flex" ,
+//        overflowY:isXs?"scroll":"unset",
+// '&::-webkit-scrollbar':{
+//   width:10,
  
-},
-'&::-webkit-scrollbar-track':{
-  // backgroundColor:"red"
-} ,
-'&::-webkit-scrollbar-thumb':{
-  backgroundColor:"gray",
-  borderRadius:"5px"
+// },
+// '&::-webkit-scrollbar-track':{
+//   backgroundColor:"red"
+// } ,
+// '&::-webkit-scrollbar-thumb':{
+//   backgroundColor:"gray",
+//   borderRadius:"5px"
   
   
-}  }}>
+// }  
+}}>
         <Box
           sx={{
             gap: "20px",
