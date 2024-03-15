@@ -2,7 +2,7 @@ import { Button, Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import { makeStyles } from "@mui/styles";
 import TextField from "@mui/material/TextField";
-import { Link , useNavigate} from "react-router-dom";
+import { Link , Navigate, useNavigate} from "react-router-dom";
 import Divider from '@mui/material/Divider';
 import { axiosInstance } from "../utils/interceptor";
 import { useState } from "react";
@@ -35,7 +35,7 @@ export const Loginpage =({setActiveUser}) => {
 
   const[loginUsername, setLoginUsername]=useState();
   const[loginPass, setLoginPass]=useState();
-  const Navigate=useNavigate();
+  // const Navigate=useNavigate();
 
 const loginHandler=async()=>{
   try {
@@ -51,7 +51,7 @@ const loginHandler=async()=>{
     localStorage.setItem("AccessToken", response.data.AccessToken);
     // localStorage.setItem("username", response.data.username);
    
-    Navigate("/");
+    <Navigate to="/"/>
     window.location.reload();
   } catch (error) {
     alert(error.response.data.message);
