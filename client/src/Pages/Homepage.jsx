@@ -112,7 +112,7 @@ Homepage = ({
 
   return (
     <>
-      <Box id="homepage" sx={{ display: "flex" ,
+      <Box id="homepage" sx={{ display: "flex" ,backgroundColor:"red"
 //        overflowY:isXs?"scroll":"unset",
 // '&::-webkit-scrollbar':{
 //   width:10,
