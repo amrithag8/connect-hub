@@ -52,8 +52,12 @@ const loginHandler=async()=>{
     // setActiveUser(response.data);
     localStorage.setItem("AccessToken", response.data.AccessToken);
     // localStorage.setItem("username", response.data.username);
+    window.location.reload();
+    if(localStorage.getItem("AccessToken")){
+      Navigate("/", {replace:true});
+    }
    
-    Navigate("/", {replace:true})
+    
   
   } catch (error) {
     alert(error.response.data.message);
