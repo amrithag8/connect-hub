@@ -369,21 +369,27 @@ Next
                   sx={{ width: "150px", height: "150px" }}
                 />
                 <Typography>Select photos and videos here</Typography>
-                <Input
-                  type="file"
-                  id="outlined-basic"
-                  label="Outlined"
-                  variant="outlined"
-                  accept="image/*, video/*"
-                  inputProps={{ multiple: true }}
-                  onChange={(e) => changeHandler(e)}
-                />
-                {/* <Button variant="contained" sx={{ textTransform: "none" }}>
-                  Select from computer
-                </Button> */}
-                <InputLabel htmlFor="outlined-button-file" variant="outlined">
+                <Box>
+                <input
+  id="fileInput"
+  type="file"
+  multiple
+  accept="image/*, video/*"
+  style={{ display: "none" }}
+  onChange={(e) => changeHandler(e)}
+/>
+
+                <label htmlFor="fileInput">
+  <Button variant="contained" component="span" sx={{ textTransform: "none" }}>
+    Select from computer
+  </Button>
+</label>
+
+</Box>
+                
+                {/* <InputLabel htmlFor="outlined-button-file" variant="outlined">
                 Select from computer
-      </InputLabel>
+      </InputLabel> */}
               </>
             )}
           </Container>

@@ -12,7 +12,7 @@ import { makeStyles } from "@mui/styles";
 import React, { useContext, useEffect, useState } from "react";
 
 
-
+import "./Messages.css";
 import { MenuItemList } from "./MenuItemList";
 import { UserList } from "./UserList";
 import Chatlist from "./ChatList";
@@ -79,18 +79,21 @@ function Messages({
   return (
         
         
-    <Box sx={{ width: "100%", height: "100%" }}>
+    <Box sx={{ width: "100%", height: "100%" ,
+    }}>
       <Box
         sx={{
           display: "flex",
           gap: "20px",
 
           width: "100%",
+          
         }}
 
         // className={classes.root}
       >
-        <Box sx={{ width: {sm:"40%", xs:userSearch?"5%":"100%"}, gap: "50px", display: "flex" }}>
+        <Box sx={{ width: {sm:"40%", xs:userSearch?"5%":"100%"}, gap: "50px", display: "flex",   
+ }}>
           <MenuItemList
             activeUser={activeUser}
             
@@ -98,6 +101,7 @@ function Messages({
             
           />
           <Divider orientation="vertical" />
+          
 
           {inboxMessages.length !== 0 ? (
 
@@ -153,6 +157,7 @@ function Messages({
             <Button variant="contained">Send message</Button>
           </Box>
         )}
+        
       </Box>
     </Box>
   );
