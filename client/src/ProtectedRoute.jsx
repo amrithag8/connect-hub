@@ -9,10 +9,12 @@ function ProtectedRoute() {
     if(localStorage.getItem("AccessToken")){
         return <Outlet/>
     }
-  return (
-    <Navigate to="/login" replace={true}/>
-    // navigate("/login")
-  )
+
+    else{
+      navigate("/login");
+return null;
+    }
+  
 }
 
 export default ProtectedRoute

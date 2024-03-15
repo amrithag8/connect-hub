@@ -35,9 +35,11 @@ export const Loginpage =({setActiveUser}) => {
 
   const[loginUsername, setLoginUsername]=useState();
   const[loginPass, setLoginPass]=useState();
-  // const Navigate=useNavigate();
+  const Navigate=useNavigate();
+  
 
 const loginHandler=async()=>{
+  
   try {
     const response=await axiosInstance("/users/login", {
       method:"POST", 
@@ -51,8 +53,8 @@ const loginHandler=async()=>{
     localStorage.setItem("AccessToken", response.data.AccessToken);
     // localStorage.setItem("username", response.data.username);
    
-    <Navigate to="/"/>
-    window.location.reload();
+    Navigate("/", {replace:true})
+  window.location.reload();
   } catch (error) {
     alert(error.response.data.message);
   }
