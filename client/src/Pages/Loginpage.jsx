@@ -54,7 +54,7 @@ const loginHandler=async()=>{
     // localStorage.setItem("username", response.data.username);
    
     Navigate("/", {replace:true})
-  window.location.reload();
+  
   } catch (error) {
     alert(error.response.data.message);
   }
