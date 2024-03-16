@@ -55,8 +55,11 @@ const loginHandler=async()=>{
     window.location.reload();
 
     setTimeout(()=>{
-      
+      if(localStorage.getItem("AccessToken")){
         Navigate("/");
+      }
+      
+        
       
     }, 5000)
     
