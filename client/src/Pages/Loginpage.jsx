@@ -65,7 +65,7 @@ const loginHandler=async()=>{
     }, 5000);
 
     
-    // window.location.reload();
+    window.location.reload();
     
    
     
