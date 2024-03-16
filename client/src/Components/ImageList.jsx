@@ -2,6 +2,7 @@ import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { axiosInstance } from "../utils/interceptor";
+import { Box } from "@mui/material";
 
 export default function StandardImageList({
   activeUser,
@@ -34,7 +35,21 @@ export default function StandardImageList({
   // console.log("myposts", myposts)
   return (
     <>
-      <ImageList sx={{ width: "80%", minHeight: 450 }} cols={3} rowHeight="250">
+      {/* <ImageList sx={{ width: "80%", minHeight: 400 }} cols={3} rowHeight={164}> */}
+        <Box sx={{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:"2px",  height:"450px", alignItems:"center", justifyContent:"center",overflowY:"scroll",
+'&::-webkit-scrollbar':{
+  width:10,
+ 
+},
+'&::-webkit-scrollbar-track':{
+  // backgroundColor:"red"
+} ,
+'&::-webkit-scrollbar-thumb':{
+  backgroundColor:"gray",
+  borderRadius:"5px"
+  
+  
+} }}>
         {!savedPost
           ? posts.map((post) => {
               return profileUser
@@ -50,13 +65,13 @@ export default function StandardImageList({
                           alt={post.title}
                           loading="lazy"
                           // style={{ width: '250px', height:'200px'}}
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px', objectFit:"cover" }}
                         />
                       ) : (
                         <video
-                          style={{ pointerEvents: "none" }}
-                          width="200"
-                          height="200"
+                          style={{ pointerEvents: "none", cursor: "pointer" ,maxwidth: '150px',width:"100%", height:'300px'}}
+                          // width="300"
+                          height="300"
                           autoPlay
                           controls
                         >
@@ -81,13 +96,13 @@ export default function StandardImageList({
                           alt={post.title}
                           loading="lazy"
                           // style={{ width: '250px', height:'200px'}}
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px', objectFit:"cover" }}
                         />
                       ) : (
                         <video
-                          style={{ pointerEvents: "none" }}
-                          width="200"
-                          height="200"
+                          style={{ pointerEvents: "none"  , cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px'}}
+                          width="300"
+                          // height="300"
                           autoPlay
                           controls
                         >
@@ -114,13 +129,13 @@ export default function StandardImageList({
                       alt={post.title}
                       loading="lazy"
                       // style={{ width: '250px', height:'200px'}}
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px', objectFit:"cover" }}
                     />
                   ) : (
                     <video
-                      style={{ pointerEvents: "none" }}
-                      width="200"
-                      height="200"
+                    style={{ pointerEvents: "none"  , cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px'}}
+                      width="300"
+                      // height="200"
                       autoPlay
                       controls
                     >
@@ -134,7 +149,8 @@ export default function StandardImageList({
                 </ImageListItem>
               );
             })}
-      </ImageList>
+            </Box>
+      {/* </ImageList> */}
     </>
   );
 }

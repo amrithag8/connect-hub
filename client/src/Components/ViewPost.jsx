@@ -163,6 +163,7 @@ export const ViewPost = ({mode}) => {
           bgcolor: "white",
           borderRadius: "10px",
           display: "flex",
+          flexDirection:{md:"row", xs:"column"},
           mt: { sm: "7%", xs: "50%" },
           justifyContent: "space-between",
           alignItems: "center",
@@ -185,7 +186,7 @@ export const ViewPost = ({mode}) => {
           <ArrowBackIosIcon sx={{ cursor: "pointer" }} onClick={handlePrev} />
           {viewpost.image[activeIndex].type === "image" ? (
             <img
-              style={{ maxWidth: "350px", width: "100%", height: "350px" }}
+              style={{ maxWidth:"350px", width: "100%", height: "350px" }}
               src={`${viewpost.image[activeIndex].imageUrl}`}
             />
           ) : (
@@ -210,7 +211,7 @@ export const ViewPost = ({mode}) => {
           />
         </Box>
 
-        <Divider orientation="vertical" sx={{ ml: "20px" }} />
+        <Divider orientation="vertical" sx={{ ml: "20px", display:{xs:"none", md:"block"} }} />
 
         <Container
           sx={{

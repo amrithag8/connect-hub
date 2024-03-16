@@ -48,6 +48,7 @@ export const Appbar=({mode ,setMode, setTriggerPost})=>{
       const logoutHandler=()=>{
         localStorage.clear();
         Navigate("/login");
+        setAnchorEl(null);
         
       }
 
@@ -67,14 +68,14 @@ export const Appbar=({mode ,setMode, setTriggerPost})=>{
           open={isMenuOpen}
           onClose={handleMenuClose}
         >
-          <MenuItem onClick={()=>Navigate("/")}> <ListItemIcon><HomeIcon/></ListItemIcon>Home</MenuItem>
+          <MenuItem onClick={()=>{Navigate("/"); setAnchorEl(null);}}> <ListItemIcon><HomeIcon/></ListItemIcon>Home</MenuItem>
           {/* <MenuItem onClick={handleMenuClose}> <ListItemIcon><ExploreOutlinedIcon/></ListItemIcon>Explore</MenuItem> */}
-          <MenuItem onClick={()=>setTriggerPost(true)}> <ListItemIcon><AddBoxOutlinedIcon/></ListItemIcon>Create</MenuItem>
+          <MenuItem onClick={()=>{setTriggerPost(true); setAnchorEl(null);}}> <ListItemIcon><AddBoxOutlinedIcon/></ListItemIcon>Create</MenuItem>
           <MenuItem onClick={handleMenuClose}> <ListItemIcon><Settings/></ListItemIcon>Settings</MenuItem>
-          <MenuItem onClick={()=>Navigate("/profile")}> <ListItemIcon><Avatar src={`${activeUser?.profilePic}`} sx={{width:"30px", height:"30px"}}/></ListItemIcon>Profile</MenuItem>
+          <MenuItem onClick={()=>{Navigate("/profile");setAnchorEl(null); }}> <ListItemIcon><Avatar src={`${activeUser?.profilePic}`} sx={{width:"30px", height:"30px"}}/></ListItemIcon>Profile</MenuItem>
           {
-            mode?(<MenuItem onClick={()=>setMode(false)}> <ListItemIcon><LightModeOutlinedIcon/></ListItemIcon>Light Mode</MenuItem>):
-            (<MenuItem onClick={()=>setMode(true)}> <ListItemIcon><ModeNightIcon/></ListItemIcon>Dark Mode</MenuItem>)
+            mode?(<MenuItem onClick={()=>{setMode(false); setAnchorEl(null);}}> <ListItemIcon><LightModeOutlinedIcon/></ListItemIcon>Light Mode</MenuItem>):
+            (<MenuItem onClick={()=>{setMode(true); setAnchorEl(null);}}> <ListItemIcon><ModeNightIcon/></ListItemIcon>Dark Mode</MenuItem>)
           }
           
           <MenuItem onClick={logoutHandler}> <ListItemIcon><Logout/></ListItemIcon>Logout</MenuItem>
@@ -127,78 +128,81 @@ export const Appbar=({mode ,setMode, setTriggerPost})=>{
       }));
     return(
         <>
-        <AppBar position="sticky" 
-        sx={{display:{xs:"block", sm:"none"}}}
-        >
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
+        {
+          localStorage.getItem("AccessToken") && (<AppBar position="sticky" 
+          sx={{display:{xs:"block", sm:"none"}}}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={()=>Navigate("/inbox")}>
-              <Badge badgeContent={`${unReadCount}`} color="error">
-                <ChatIcon />
-              </Badge>
-            </IconButton>
+          <Toolbar>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              edge="start"
               color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
             >
-              <Badge badgeContent={17} color="error">
-                <FavoriteIcon/>
-              </Badge>
+              <MenuIcon />
             </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: 'none', sm: 'block' } }}
             >
-              <Avatar src={`${activeUser?.profilePic}`} sx={{width:"30px", height:"30px"}}/>
-            </IconButton>
-          </Box>
-          {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}> */}
-            {/* <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            > */}
-              {/* <MoreIcon /> */}
-            {/* </IconButton> */}
-          {/* </Box> */}
-        </Toolbar>
-      </AppBar>
+              MUI
+            </Typography>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
+              <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={()=>Navigate("/inbox")}>
+                <Badge badgeContent={`${unReadCount}`} color="error">
+                  <ChatIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={17} color="error">
+                  <FavoriteIcon/>
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <Avatar src={`${activeUser?.profilePic}`} sx={{width:"30px", height:"30px"}}/>
+              </IconButton>
+            </Box>
+            {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}> */}
+              {/* <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              > */}
+                {/* <MoreIcon /> */}
+              {/* </IconButton> */}
+            {/* </Box> */}
+          </Toolbar>
+        </AppBar>)
+        }
+        
       {renderMenu}
     </>
     )

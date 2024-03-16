@@ -52,12 +52,12 @@ const loginHandler=async()=>{
     // setActiveUser(response.data);
     localStorage.setItem("AccessToken", response.data.AccessToken);
     // localStorage.setItem("username", response.data.username);
-    // window.location.reload();
+    window.location.reload();
 
-    setInterval(()=>{
-      if(localStorage.getItem("AccessToken")){
-        Navigate("/", {replace:true});
-      }
+    setTimeout(()=>{
+      
+        Navigate("/");
+      
     }, 5000)
     
    
@@ -75,7 +75,7 @@ const loginHandler=async()=>{
     <Box className={classes.boxStyle} >
       <Container maxWidth="xs" sx={{border: "1px solid #D7D7D7"}}>
       <Box className={classes.formStyle} >
-        <h1 style={{marginBottom:"40px"}}>Connect App</h1>
+        <h1 style={{marginBottom:"40px"}}>Connect Hub</h1>
 
         <TextField
           fullWidth

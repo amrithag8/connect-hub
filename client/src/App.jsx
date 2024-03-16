@@ -218,7 +218,9 @@ function App() {
     <>
       <ThemeProvider theme={mode ? darkTheme : lightTheme}>
         <CssBaseline />
-        <Appbar mode={mode} setMode={setMode} setTriggerPost={setTriggerPost} />
+        
+          <Appbar mode={mode} setMode={setMode} setTriggerPost={setTriggerPost} />
+        
 
         {triggerPost && <Createpost />}
         {changePost && <Editpost />}

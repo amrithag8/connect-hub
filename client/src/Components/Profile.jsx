@@ -306,7 +306,7 @@ export const Profile = () => {
         </Box>
       </Box>
       <Toolbar />
-      <Divider width="80%" />
+      <Divider width="100%" />
       <Stack
         width="80%"
         direction="row"
