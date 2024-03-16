@@ -71,13 +71,13 @@ else {
 if(verifyPass){
     AccessToken=generateToken(isExistUsername._id);
     // console.log("token", AccessToken);
-    return res.status(200).json({id:isExistUsername._id, username:isExistUsername.username, fullName:isExistUsername.fullName, followers:isExistUsername.followers, following:isExistUsername.following, saved:isExistUsername.saved, AccessToken});
+    return res.status(200).json({id:isExistUsername._id, username:isExistUsername.username, fullName:isExistUsername.fullName, followers:isExistUsername.followers, following:isExistUsername.following, AccessToken});
     
 }
 else if(comparePass){
     AccessToken=generateToken(isExistEmail._id);
     // console.log("tokeb", AccessToken);
-    return res.status(200).json({id:isExistEmail._id, username:isExistEmail.username, fullName:isExistEmail.fullName, followers:isExistEmail.followers, following:isExistEmail.following, saved:isExistEmail.saved,AccessToken});
+    return res.status(200).json({id:isExistEmail._id, username:isExistEmail.username, fullName:isExistEmail.fullName, followers:isExistEmail.followers, following:isExistEmail.following, AccessToken});
 }
 
 else{
