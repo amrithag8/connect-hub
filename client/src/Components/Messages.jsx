@@ -15,7 +15,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Messages.css";
 import { MenuItemList } from "./MenuItemList";
 import { UserList } from "./UserList";
-import Chatlist from "./Chatlist";
+import Chatlist from "./ChatList";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "../utils/interceptor";
 import UserContext from "../Contexts/UserContext";
