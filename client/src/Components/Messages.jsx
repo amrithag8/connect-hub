@@ -92,11 +92,11 @@ function Messages({
 
         // className={classes.root}
       >
-        <Box sx={{ width: {sm:"40%", xs:userSearch?"5%":"100%"}, gap: "50px", display: "flex",   
+        <Box sx={{ width: {md:"40%", xs:userSearch?"0%":"100%"}, gap: "50px", display: "flex",  overflowY:{xs:"scroll", sm:"unset"} 
  }}>
           <MenuItemList
             activeUser={activeUser}
-            
+            userSearch={userSearch}
             setTriggerPost={setTriggerPost}
             
           />

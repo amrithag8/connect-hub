@@ -121,7 +121,7 @@ const loginHandler=async()=>{
         </p>
       </Container>
       <p>Get the app.</p>
-      <img src="src/assets/image 19.png" />
+      <img src="http://localhost:3007/image 19.png" />
     </Box>
   );
 };

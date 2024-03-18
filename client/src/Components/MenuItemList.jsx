@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MessageContext } from "../Contexts/MessageContext";
 
-export const MenuItemList=({setTriggerPost,  activeUser })=>{
+export const MenuItemList=({setTriggerPost,  activeUser, userSearch })=>{
     // const drawerWidth=240;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const { unReadCount, setMessageOpen,messageOpen}=React.useContext(MessageContext);
@@ -71,7 +71,7 @@ setMessageOpen(true);
 
 
       
-        <Box sx={{width:"10%"}}>
+        <Box sx={{width:"10%", display:{XS:userSearch?"none":"block", sm:userSearch?"none":"block", md:"block"}}}>
         <AccountsMenu  anchorEl={anchorEl} setAnchorEl={setAnchorEl} setNotifications={setNotifications} onsearch={onsearch} notifications={notifications} setOnsearch={setOnsearch}/>
         <Toolbar />
         

@@ -57,11 +57,12 @@ try {
             email, fullName, username, password
         }
     });
-    toast.success("Sign up successfull");
+    // toast.success("Sign up successfull");
+    alert(response.data.message);
     
     navigate('/login');
 } catch (error) {
-    toast.error(error.response.data.message);
+    alert(error.response.data.message);
     
 }
     }
@@ -75,7 +76,7 @@ try {
                     <h1>Connect App</h1>
                     <h4 style={{ marginTop:"-10px", padding:"0 60px"}}> Sign up to see photos and videos from your friends</h4>
                     <Button sx={{textTransform: "none"}} startIcon= {<Facebook/>} fullWidth variant="contained">Log in with facebook</Button>
-            <TextField fullWidth id="outlined-basic" label="Email or phone number" variant="filled" required onChange={(e)=>setEmail(e.target.value)} />
+            <TextField fullWidth id="outlined-basic" label="Email or phone number" type="email" variant="filled" required onChange={(e)=>setEmail(e.target.value)} />
             <TextField fullWidth id="outlined-basic" label="Full Name" variant="filled" required onChange={(e)=>setFullName(e.target.value)}/>
             <TextField fullWidth id="outlined-basic" label="Username" variant="filled" required onChange={(e)=>setUsername(e.target.value)}/>
             <TextField fullWidth id="outlined-basic" label="Password" type="password" required variant="filled" onChange={(e)=>setPassword(e.target.value)}/>

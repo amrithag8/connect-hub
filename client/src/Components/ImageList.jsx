@@ -69,8 +69,8 @@ export default function StandardImageList({
                         />
                       ) : (
                         <video
-                          style={{ pointerEvents: "none", cursor: "pointer" ,maxwidth: '150px',width:"100%", height:'300px'}}
-                          // width="300"
+                          style={{ pointerEvents: "none", cursor: "pointer" ,maxwidth: '150px',width:"100%", height:'300px', objectFit:"cover"}}
+                          width="300"
                           height="300"
                           autoPlay
                           controls
@@ -100,9 +100,9 @@ export default function StandardImageList({
                         />
                       ) : (
                         <video
-                          style={{ pointerEvents: "none"  , cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px'}}
+                          style={{ pointerEvents: "none"  , cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px', objectFit:"cover"}}
                           width="300"
-                          // height="300"
+                          height="300"
                           autoPlay
                           controls
                         >
@@ -133,7 +133,7 @@ export default function StandardImageList({
                     />
                   ) : (
                     <video
-                    style={{ pointerEvents: "none"  , cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px'}}
+                    style={{ pointerEvents: "none"  , cursor: "pointer", maxwidth: '150px',width:"100%", height:'300px', objectFit:"cover"}}
                       width="300"
                       // height="200"
                       autoPlay

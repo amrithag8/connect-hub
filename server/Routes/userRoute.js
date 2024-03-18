@@ -27,6 +27,9 @@ const storage = multer.diskStorage({
 
 router.post("/register", async(req, res)=>{
     const{email, fullName, username, password}=req.body;
+    if(!email || !fullName || !username || !password){
+return res.status(401).json({message:"All fields are required"});
+    }
     const isExistEmail=await User.findOne({email:email});
     if(isExistEmail){
 return res.status(401).json({message:"Email already exists"});
@@ -43,7 +46,7 @@ return res.status(401).json({message:"Email already exists"});
 
     console.log("value", email, fullName, username, password, HashPassword);
     // console.log(Users);
-    res.status(200).json(Users );
+    res.status(200).json({message:"Sign Up successful"} );
 })
 
 

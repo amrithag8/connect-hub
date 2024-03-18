@@ -17,6 +17,9 @@ require('dotenv').config();
 
 const connectDb=require("./config/db");
 const app=express();
+const path = require('path');
+app.use(cors());
+
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
@@ -25,11 +28,16 @@ const io = require("socket.io")(server, {
     },
   });
 
+  const corsOptions = {
+    origin: 'http://localhost:5173',
+    // Add other CORS options as needed
+  };
+
 //   app.use(cors({ origin: "https://connect-hub-client.onrender.com", credentials: true }));
 
 
 // app.use(cors({ origin: "http://localhost:5173/", credentials: true }));
-
+app.use(cors(corsOptions));
   connectDb();
 const userRoute=require("./Routes/userRoute");
 const postRoute=require("./Routes/postRoute");
@@ -40,9 +48,9 @@ const jwt = require("jsonwebtoken");
 
 
 
-app.use(cors());
+
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 // app.get('/', (req, res) => {
 //     res.sendFile(__dirname, 'index.html');
@@ -126,6 +134,4 @@ io.on('connection', (socket) => {
 
 
 const PORT=3007;
-server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is running on http://0.0.0.0:${PORT}`);
-  });
+server.listen(PORT, console.log(`Server is running on http://localhost:${PORT}`));
