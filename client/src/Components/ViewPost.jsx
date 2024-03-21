@@ -7,6 +7,7 @@ import {
   TextField,
   Toolbar,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -18,16 +19,17 @@ import EmojiPicker from "emoji-picker-react";
 import UserContext from "../Contexts/UserContext";
 import { PostsContext } from "../Contexts/PostsContext";
 
-export const ViewPost = ({mode}) => {
+export const ViewPost = ({ mode }) => {
   // const [editedTitle, setEditedTitle] = useState();
   // const [editedCaption, setEditedCaption] = useState();
   const [activeIndex, setActiveIndex] = useState(0);
-  const{viewpost, setTriggerViewpost}=useContext(PostsContext);
+  const { viewpost, setTriggerViewpost } = useContext(PostsContext);
   const [newcomment, setNewComment] = useState("");
   const [comments, setComments] = useState([]);
   const [emojiOepn, setEmojiOpen] = useState(false);
   const emojiRef = useRef(null);
-  const{activeUser}=useContext(UserContext)
+  const { activeUser } = useContext(UserContext);
+  const isXsOrSm = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -145,7 +147,7 @@ export const ViewPost = ({mode}) => {
       <CloseIcon
         sx={{
           position: "absolute",
-          top: "5%",
+          top: isXsOrSm ? "10%" : "5%",
           right: "5%",
           cursor: "pointer",
           color: "white",
@@ -163,8 +165,8 @@ export const ViewPost = ({mode}) => {
           bgcolor: "white",
           borderRadius: "10px",
           display: "flex",
-          flexDirection:{md:"row", xs:"column"},
-          mt: { sm: "7%", xs: "50%" },
+          flexDirection: { md: "row", xs: "column" },
+          mt: { sm: "17%", xs: "45%" },
           justifyContent: "space-between",
           alignItems: "center",
           overflow: "auto",
@@ -175,7 +177,31 @@ export const ViewPost = ({mode}) => {
 
         {/* <Box component="img" src={`http://localhost:3007/images/${viewpost.image}`} sx={{width:{md:"600px", sm:"200px", xs:"100px"}, height:{md:"550px", sm:"200px", xs:"100px"}}}></Box> */}
         {/* <img style={{width:{sm:"400px", xs:"150px"}, height:{sm:"450px", xs:"150px"}}} src={imagePreview}/> </> */}
+        {isXsOrSm && (
+          <>
+            <Box
+              sx={{
+                display: "flex",
+                gap: "10px",
+                alignItems: "center",
+                mt: "10px",
+              }}
+            >
+              <Avatar
+                sx={{ width: "40px", height: "40px" }}
+                src={`${viewpost?.postedBy?.profilePic}`}
+              />
+              <Typography sx={{ fontWeight: "600" }}>
+                {viewpost.postedBy.username}
+              </Typography>
+            </Box>
 
+            <Divider
+              orientation="horizontal"
+              sx={{ mt: "10px", width: "100%", mb: "10px" }}
+            />
+          </>
+        )}
         <Box
           sx={{
             display: "flex",
@@ -186,14 +212,21 @@ export const ViewPost = ({mode}) => {
           <ArrowBackIosIcon sx={{ cursor: "pointer" }} onClick={handlePrev} />
           {viewpost.image[activeIndex].type === "image" ? (
             <img
-              style={{ maxWidth:"350px", width: "100%", height: "350px" }}
+              style={{
+                maxWidth: isXsOrSm ? "200px" : "350px",
+                width: "100%",
+                height: isXsOrSm ? "300" : "350",
+              }}
               src={`${viewpost.image[activeIndex].imageUrl}`}
             />
           ) : (
             <video
-              style={{ pointerEvents: "none" }}
-              width="350"
-              height="350"
+              style={{
+                pointerEvents: "none",
+                maxWidth: isXsOrSm ? "200px" : "350px",
+                height: isXsOrSm ? "200" : "350",
+              }}
+              width={isXsOrSm ? "200" : "350"}
               autoPlay
               controls
             >
@@ -211,7 +244,10 @@ export const ViewPost = ({mode}) => {
           />
         </Box>
 
-        <Divider orientation="vertical" sx={{ ml: "20px", display:{xs:"none", md:"block"} }} />
+        <Divider
+          orientation="vertical"
+          sx={{ ml: "20px", display: { xs: "none",sm:"none", md: "block" } }}
+        />
 
         <Container
           sx={{
@@ -221,127 +257,158 @@ export const ViewPost = ({mode}) => {
             flexDirection: "column",
           }}
         >
-          <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
-            <Avatar
-              sx={{ width: "40px", height: "40px" }}
-              src={`${viewpost?.postedBy?.profilePic}`}
-            />
-            <Typography sx={{ fontWeight: "600" }}>
-              {viewpost.postedBy.username}
-            </Typography>
-          </Box>
+          {!isXsOrSm && (
+            <>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "center",
+                  mt: "40px",
+                }}
+              >
+                <Avatar
+                  sx={{ width: "40px", height: "40px" }}
+                  src={`${viewpost?.postedBy?.profilePic}`}
+                />
+                <Typography sx={{ fontWeight: "600" }}>
+                  {viewpost.postedBy.username}
+                </Typography>
+              </Box>
 
-          <Divider
-            orientation="horizontal"
-            sx={{ mt: "10px", width: "100%" }}
-          />
-<Box sx={{overflow:"auto"}}>
-  {/* <Box sx={{pb:"40px"}}> */}
-          {viewpost.caption && (
-            <Box sx={{ display: "flex", gap: "10px", mt: "10px" }}>
-              <Avatar
-                sx={{ width: "40px", height: "40px" }}
-                src={`${viewpost?.postedBy?.profilePic}`}
+              <Divider
+                orientation="horizontal"
+                sx={{ mt: "10px", width: "100%" }}
               />
-              <Typography sx={{ fontWeight: "600" }}>
-                {viewpost.postedBy.username}
-              </Typography>
-              <Typography>{viewpost.caption}</Typography>
-            </Box>
+            </>
           )}
-          {/* <Divider orientation='horizontal' sx={{mt:"95%", width:"100%"}}/> */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              mt: "10px",
-              alignItems: "flex-start",
-            }}
-          >
-            {comments.map((item) => {
-              return (
-                <Box
-                  key={item._id}
-                  sx={{ display: "flex", gap: "10px", alignItems: "center" }}
-                >
-                  <Typography sx={{ fontWeight: "bold" }}>
-                    {item.commentedBy.fullName}:
-                  </Typography>
-                  <Typography>{item.text}</Typography>
-
-                  {item.commentedBy._id === activeUser._id && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        fontWeight: "bold",
-                        cursor: "pointer",
-                        zIndex: emojiOepn ? "" : 50,
-                        "&:hover": {
-                          textDecoration: "underline",
-                        },
-                      }}
-                      onClick={() => deleteCommentsHandler(item._id)}
-                    >
-                      Delete
+          {/* <Box sx={{pb:"100px"}}> */}
+          <Box sx={{ overflowY: "auto", height:{md:"350px", xs:"140px"} }}>
+            {viewpost.caption &&
+              (isXsOrSm ? (
+                <>
+                  <Box sx={{ display: "flex", gap: "10px", mt: "10px" }}>
+                    <Avatar
+                      sx={{ width: "40px", height: "40px" }}
+                      src={`${viewpost?.postedBy?.profilePic}`}
+                    />
+                    <Typography sx={{ fontWeight: "600" }}>
+                      {viewpost.postedBy.username}
                     </Typography>
-                  )}
-                </Box>
-              );
-            })}
+                  </Box>
+                  <Typography>{viewpost.caption}</Typography>
+                </>
+              ) : (
+                <>
+                  <Box sx={{ display: "flex", gap: "10px", mt: "10px" }}>
+                    <Avatar
+                      sx={{ width: "40px", height: "40px" }}
+                      src={`${viewpost?.postedBy?.profilePic}`}
+                    />
+                    <Typography sx={{ fontWeight: "600" }}>
+                      {viewpost.postedBy.username}
+                    </Typography>
+                    <Typography>{viewpost.caption}</Typography>
+                  </Box>
+                </>
+              ))}
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                mt: "10px",
+                alignItems: "flex-start",
+              }}
+            >
+              {comments.map((item) => {
+                return (
+                  <Box
+                    key={item._id}
+                    sx={{ display: "flex", gap: "10px", alignItems: "center" }}
+                  >
+                    <Typography sx={{ fontWeight: "bold" }}>
+                      {item.commentedBy.fullName}:
+                    </Typography>
+                    <Typography>{item.text}</Typography>
+
+                    {item.commentedBy._id === activeUser._id && (
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          fontWeight: "bold",
+                          cursor: "pointer",
+                          zIndex: emojiOepn ? "" : 50,
+                          "&:hover": {
+                            textDecoration: "underline",
+                          },
+                        }}
+                        onClick={() => deleteCommentsHandler(item._id)}
+                      >
+                        Delete
+                      </Typography>
+                    )}
+                  </Box>
+                );
+              })}
             </Box>
           </Box>
           {/* </Box> */}
-          <Box sx={{pt:"40px"}}>
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: 0,
-              display: "flex",
-              justifyContent: "space-between",
-              width: "50%",
-              alignItems: "center",
-              
-            }}
-          >
+
+          <Box sx={{ pt: "50px" }}>
             <Box
-              ref={emojiRef}
               sx={{
                 position: "absolute",
-                bottom: "120px",
-                width: 400,
-                height: 400,
+                bottom: 0,
+                display: "flex",
+                justifyContent: "space-between",
+                width: { sm: "50%", md: "38%", lg: "45%", xs: "80%" },
+                alignItems: "center",
               }}
             >
-              <EmojiPicker
-                open={emojiOepn}
-                autoFocusSearch
-                onEmojiClick={emojiHandler}
+              <Box
+                ref={emojiRef}
+                sx={{
+                  position: "absolute",
+                  bottom: "120px",
+                  width: 400,
+                  height: 400,
+                }}
+              >
+                <EmojiPicker
+                  open={emojiOepn}
+                  autoFocusSearch
+                  onEmojiClick={emojiHandler}
+                />
+              </Box>
+
+              <Box
+                sx={{ cursor: "pointer" }}
+                onClick={() => setEmojiOpen(true)}
+              >
+                😊
+              </Box>
+              <TextField
+                id="messageInput"
+                label="Add comment"
+                variant="outlined"
+                value={newcomment}
+                sx={{
+                  // width: { sm: "100%", xs: "100%" },
+                  flexGrow: 1,
+                  border: "none",
+                  "& fieldset": { border: "none" },
+                }}
+                onChange={(e) => setNewComment(e.target.value)}
               />
+              <Typography
+                sx={{ cursor: "pointer" }}
+                onClick={() => postCommentHandler(viewpost._id)}
+              >
+                Post
+              </Typography>
             </Box>
-            <Box sx={{ cursor: "pointer" }} onClick={() => setEmojiOpen(true)}>
-              😊
-            </Box>
-            <TextField
-              id="messageInput"
-              label="Add comment"
-              variant="outlined"
-              value={newcomment}
-              sx={{
-                width: { sm: "100%", xs: "100%" },
-                border: "none",
-                "& fieldset": { border: "none" },
-                
-              }}
-              onChange={(e) => setNewComment(e.target.value)}
-            />
-            <Typography
-              sx={{ cursor: "pointer" }}
-              onClick={() => postCommentHandler(viewpost._id)}
-            >
-              Post
-            </Typography>
-          </Box>
           </Box>
           {/* <Button variant='contained' sx={{textTransform:"none", marginTop:"20px"}} onClick={()=>editpostHandler(editedPost.postID, editedPost.title, editedPost.caption )}>Post</Button> */}
         </Container>
