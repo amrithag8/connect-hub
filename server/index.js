@@ -29,7 +29,7 @@ const io = require("socket.io")(server, {
   });
 
   const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://master--connect-hub-client.netlify.app',
     // Add other CORS options as needed
   };
 
