@@ -58,6 +58,10 @@ export const Registerpage = () => {
     }
   };
 
+  const handlesignup=(event)=>{
+console.log(event.target);
+  }
+
   const classes = useStyles();
   return (
     <>
@@ -80,7 +84,7 @@ export const Registerpage = () => {
             >
               Log in with facebook
             </Button>
-            <form>
+            <form onSubmit={handlesignup}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -144,7 +148,7 @@ export const Registerpage = () => {
               fullWidth
               variant="contained"
               type="submit"
-              onClick={signupHandler}
+            //   onClick={signupHandler}
             >
               Sign up
             </Button>
