@@ -215,7 +215,7 @@ export const ViewPost = ({ mode }) => {
               style={{
                 maxWidth: isXsOrSm ? "200px" : "350px",
                 width: "100%",
-                height: isXsOrSm ? "300" : "350",
+                height: isXsOrSm ? "300px" : "350px",
               }}
               src={`${viewpost.image[activeIndex].imageUrl}`}
             />

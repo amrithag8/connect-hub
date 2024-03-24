@@ -36,10 +36,22 @@ export const Registerpage = () => {
   const [fullName, setFullName] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const[validate, setValidate]=useState({
+    email:true,
+    fullName:true,
+    username:true,
+    password:true
+  });
   const navigate = useNavigate();
 
   const signupHandler = async () => {
     try {
+        if(validate.email && validate.fullName && validate.username && validate.password){
+
+            console.log("email", email);
+        console.log("username", username);
+        console.log("fullname", fullName);
+        console.log("password", password);
       const response = await axiosInstance("/users/register", {
         method: "POST",
         data: {
@@ -49,18 +61,46 @@ export const Registerpage = () => {
           password,
         },
       });
-      // toast.success("Sign up successfull");
+      
       alert(response.data.message);
 
       navigate("/login");
+    }
     } catch (error) {
       alert(error.response.data.message);
     }
   };
 
-  const handlesignup=(event)=>{
-console.log(event.target);
+  const handlesignup=async(event)=>{
+    event.preventDefault();
+    // console.log("event", event.target.validity.valid);
+    try {
+    if(validate.email && validate.fullName && validate.username && validate.password){
+        console.log("email", email);
+        console.log("username", username);
+        console.log("fullname", fullName);
+        console.log("password", password);
+
+        const response = await axiosInstance("/users/register", {
+            method: "POST",
+            data: {
+              email,
+              fullName,
+              username,
+              password,
+            },
+          });
+          
+          alert(response.data.message);
+    
+          navigate("/login");
+    }
+    
   }
+  catch(error){
+    alert(error.response.data.message);
+  }
+}
 
   const classes = useStyles();
   return (
@@ -91,40 +131,57 @@ console.log(event.target);
               label="Email or username"
               type="email"
               variant="filled"
+              value={email}
+              name={email}
               InputProps={{
                 inputProps: { pattern: "[^\\s@]+@[^\\s@]+\\.[^\\s@]+" },
               }}
               required
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {setEmail(e.target.value);
+            console.log("event.target.validity.valid", e.target.validity.valid);
+            setValidate((prev) => ({ ...prev, email: e.target.validity.valid }))
+    }}
             />
             <TextField
               fullWidth
               id="outlined-basic"
               label="Full Name"
               variant="filled"
+              value={fullName}
+              name={fullName}
               required
-              inputProps={{ pattern: '^[a-zA-Z0-9]*[a-zA-Z][a-zA-Z0-9]*$' ,
-              title: 'This field needs to be alphanumeric',}}
-              onChange={(e) => setFullName(e.target.value)}
+              inputProps={{ pattern: "^[A-Za-z]+(?: [A-Za-z]+)*$",
+              title: 'This field needs to contain only alphabets',}}
+              onChange={(e) => {setFullName(e.target.value);
+                setValidate((prev) => ({ ...prev, fullName: e.target.validity.valid }))
+            }}
             />
             <TextField
               fullWidth
               id="outlined-basic"
               label="Username"
               variant="filled"
+              value={username}
+              name={username}
               required
               inputProps={{ pattern: '^[a-zA-Z0-9]*[a-zA-Z][a-zA-Z0-9]*$',
               title: 'This field needs to be alphanumeric', }}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => {setUsername(e.target.value);
+                setValidate((prev) => ({ ...prev, username: e.target.validity.valid }))
+            }}
             />
             <TextField
               fullWidth
               id="outlined-basic"
               label="Password"
               type="password"
+              value={password}
+              name={password}
               required
               variant="filled"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {setPassword(e.target.value);
+                setValidate((prev) => ({ ...prev, password: e.target.validity.valid }))
+            }}
             />
             <p style={{ fontSize: "13px", color: "#6E6E6E" }}>
               People who use our service may have uploaded your contact
