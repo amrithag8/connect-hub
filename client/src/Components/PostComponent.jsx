@@ -31,7 +31,7 @@ function PostComponent({item}) {
           component="img"
           height="400"
           image={`${item?.image[currentIndex]?.imageUrl}`}
-          alt="Paella dish"
+          alt="image"
           sx={{objectFit:"contain"}}
           
         />):(<CardMedia
@@ -55,7 +55,7 @@ function PostComponent({item}) {
                  component="img"
                  height="400"
                  image={`${item?.image[0]?.imageUrl}`}
-                 alt="Paella dish"
+                 alt="image"
                  sx={{objectFit:"contain"}}
                />):(<CardMedia
                 component="video"
