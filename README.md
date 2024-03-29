@@ -46,25 +46,25 @@ By embracing these best practices, Connect Hub not only replicates popular socia
    * Bio setting and display.
    * Followers and following.
 
-3. # Content Posting #
+3. ## Content Posting ##
    *Uploading and sharing images or videos.
    * Viewing short video clips and images in a special tab.
 
-4. # Stories #
+4. ## Stories ##
    *Adding and viewing temporary stories.
 
-5. # Post Interactions #
+5. ## Post Interactions ##
    * Liking, commenting, and sharing posts.
    * Saving posts for later viewing.
 
-6. # Messaging #
+6. ## Messaging ##
    * Private user-to-user chats.
    * Number of unseen chat shown when new message received.
   
-7. # Search #
+7. ## Search ##
    * User search functionality.
 
-8. # Infinite Scrolling #
+8. ## Infinite Scrolling ##
  ``* Implementation of infinite scroll for endless content loading.
    
 
