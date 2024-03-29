@@ -47,11 +47,11 @@ By embracing these best practices, Connect Hub not only replicates popular socia
    * Followers and following.
 
 3. ## Content Posting ##
-   *Uploading and sharing images or videos.
+   * Uploading and sharing images or videos.
    * Viewing short video clips and images in a special tab.
 
 4. ## Stories ##
-   *Adding and viewing temporary stories.
+   * Adding and viewing temporary stories.
 
 5. ## Post Interactions ##
    * Liking, commenting, and sharing posts.
