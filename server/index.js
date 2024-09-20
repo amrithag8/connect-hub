@@ -29,12 +29,10 @@ const io = require("socket.io")(server, {
   });
 
   const corsOptions = {
-    // origin:'http://localhost:5173',
-    origin: 'https://master--connect-hub-client.netlify.app',
-    credentials:true,            
-    optionSuccessStatus:200
+    // origin: 'https://master--connect-hub-client.netlify.app',
     // Add other CORS options as needed
-    // origin:'http://localhost:5173',
+    origin:'http://localhost:5173',
+    credentials: true
   };
 
 //   app.use(cors({ origin: "https://connect-hub-client.onrender.com", credentials: true }));
