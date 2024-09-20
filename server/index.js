@@ -24,12 +24,15 @@ const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
       origin: "*",
-      methords: ["GET", "POST"],
+      methods: ["GET", "POST"],
     },
   });
 
   const corsOptions = {
-    origin: 'https://master--connect-hub-client.netlify.app',
+    origin:'http://localhost:5173',
+    // origin: 'https://master--connect-hub-client.netlify.app',
+    credentials:true,            
+    optionSuccessStatus:200
     // Add other CORS options as needed
     // origin:'http://localhost:5173',
   };
