@@ -32,9 +32,7 @@ const io = require("socket.io")(server, {
     // origin: 'https://master--connect-hub-client.netlify.app',
     // Add other CORS options as needed
     origin: 'http://localhost:5173',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add the methods you're using
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow the necessary headers
+  
   };
 
 //   app.use(cors({ origin: "https://connect-hub-client.onrender.com", credentials: true }));
