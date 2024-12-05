@@ -5,6 +5,7 @@
 https://github.com/amrithag8/connect-hub/assets/127708115/aa5a167a-1883-4ba1-bd95-1f912688bbbe
 
 ## LiveUrl : https://master--connect-hub-client.netlify.app
+## Demo: https://youtu.be/MHzvzHuTcWg
 
 # Overview #
 Connect Hub provides a vibrant and dynamic platform for users to share their lives, connect with others, and discover new content from around the world. Whether users are aspiring photographers, social influencers, or simply looking to stay connected with friends. It incorporates essential features for photo and video sharing, story viewing, post interactions, messaging, and personalized content discovery.
